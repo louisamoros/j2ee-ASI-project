@@ -13,8 +13,8 @@ target/
 *.class
 
 # Package Files #
-*.jar
-*.war
+#*.jar
+#*.war
 #*.ear
 *.db
 
