@@ -1,5 +1,4 @@
 # MINE #
-*.swp
 .metadata/
 RemoteSystemsTempFiles/
 
@@ -16,7 +15,7 @@ target/
 # Package Files #
 *.jar
 *.war
-*.ear
+#*.ear
 *.db
 
 ######################
@@ -24,7 +23,7 @@ target/
 ######################
 
 *.pydevproject
-.project
+#.project # Need to be visible by git to import project into eclipse workspace
 .metadata
 bin/**
 tmp/**
@@ -38,6 +37,7 @@ local.properties
 .settings/
 .loadpath
 /src/main/resources/rebel.xml
+
 # External tool builders
 .externalToolBuilders/
 
