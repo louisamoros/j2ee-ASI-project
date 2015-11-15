@@ -3,6 +3,9 @@
 	<name>front-auth-watcher-web-service</name>
 	<comment></comment>
 	<projects>
+		<project>middle-auth-watcher-ejb</project>
+		<project>middle-auth-watcher-ejb-client</project>
+		<project>watcher-auth-javaee</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

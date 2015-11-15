@@ -5,7 +5,7 @@
 	<projects>
 		<project>front-auth-watcher-web-service</project>
 		<project>middle-auth-watcher-ejb</project>
-		<project>middle-auth-watcher-ejbClient</project>
+		<project>middle-auth-watcher-ejb-client</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
