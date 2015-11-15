@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd" id="Application_ID" version="7">
+  <display-name>watcher-auth-javaee</display-name>
+  <module>
+    <web>
+      <web-uri>front-auth-watcher-web-service.war</web-uri>
+      <context-root>front-auth-watcher-web-service</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>middle-auth-watcher-ejb.jar</ejb>
+  </module>
+</application>
