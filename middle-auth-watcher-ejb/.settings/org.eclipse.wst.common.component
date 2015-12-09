@@ -2,5 +2,7 @@
     <wb-module deploy-name="middle-auth-watcher-ejb">
         <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
         <property name="java-output-path" value="/middle-auth-watcher-ejb/build/classes"/>
+        <property name="ClientProject" value="middle-auth-watcher-ejb-client"/>
+        <property name="ClientJARURI" value="middle-auth-watcher-ejb-client.jar"/>
     </wb-module>
 </project-modules>

@@ -13,9 +13,9 @@ target/
 *.class
 
 # Package Files #
-#*.jar
-#*.war
-#*.ear
+*.jar
+*.war
+*.ear
 *.db
 
 ######################
@@ -34,7 +34,7 @@ tmp/**/*
 *~.nib
 local.properties
 .classpath
-#.settings/
+.settings/
 .loadpath
 /src/main/resources/rebel.xml
 

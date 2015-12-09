@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
-import javax.jms.JMSRuntimeException;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
@@ -24,8 +23,7 @@ public class MessageSender implements MessageSenderLocal {
 
 	@Inject
 	JMSContext context;
-
-	@Resource(mappedName = "java:/jms/queue/watcherqueue")
+	@Resource(mappedName = "java:/jms/queue/watcher-queue")
 	Queue queue;
 
 	/**
@@ -34,13 +32,9 @@ public class MessageSender implements MessageSenderLocal {
 	public MessageSender() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void sendMessage(String message) {
-		try {
-			context.createProducer().send(queue, message);			
-		} catch (JMSRuntimeException e) {
-			e.printStackTrace();
-		}
+		// TODO
 	}
 
 	public void sendMessage(UserModel user) {

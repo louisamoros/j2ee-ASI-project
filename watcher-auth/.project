@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>watcher-auth-javaee</name>
+	<name>watcher-auth</name>
 	<comment></comment>
 	<projects>
-		<project>middle-auth-watcher-ejb-client</project>
-		<project>front-auth-watcher-web-service</project>
 		<project>middle-auth-watcher-ejb</project>
+		<project>front-auth-watcher-web-service</project>
+		<project>middle-auth-watcher-ejb-client</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
