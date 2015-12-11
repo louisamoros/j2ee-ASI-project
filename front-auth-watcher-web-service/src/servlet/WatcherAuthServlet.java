@@ -2,10 +2,10 @@ package servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,65 +17,41 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
+import common.UserModel;
 
-/**
- * Servlet implementation class WatcherAuthServlet
- */
+import ejb.MessageReceiverSyncLocal;
+import ejb.MessageSenderLocal;
+
 @WebServlet("/watcher-auth-servlet")
 public class WatcherAuthServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	@EJB
+	 MessageSenderLocal sender;
+	 @EJB
+	 MessageReceiverSyncLocal receiver;
+
 	public WatcherAuthServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("coucou");
 
 		List<String> list = new ArrayList<String>();
-		list.add("item1");
-		list.add("item2");
-		list.add("item3");
+		list.add("doGet");
+		list.add("is");
+		list.add("working");
 		String json = new Gson().toJson(list);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(json);
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		System.out.println("yoyo");
-
-		// List<String> list = new ArrayList<String>();
-		// list.add("meti1");
-		// list.add("meti2");
-		// list.add("meti3");
-		// String json = new Gson().toJson(list);
-		// // response.setContentType("application/json");
-		// // response.setCharacterEncoding("UTF-8");
-		// // response.getWriter().write(json);
-		// response.setContentType("application/json");
-		// PrintWriter out = response.getWriter();
-		// out.write(json);
-		// out.flush();
-
-		// String jsonAuth ="{"+"\"login\"unsure emoticon"tp\","+
-		// "\"pwd\"unsure emoticon"tp\"}";
 
 		StringBuffer sb = new StringBuffer();
 
@@ -91,6 +67,7 @@ public class WatcherAuthServlet extends HttpServlet {
 
 		JSONParser parser = new JSONParser();
 		JSONObject req = null;
+
 		try {
 			req = (JSONObject) parser.parse(sb.toString());
 		} catch (ParseException e) {
@@ -103,7 +80,23 @@ public class WatcherAuthServlet extends HttpServlet {
 		System.out.println("login : " + login);
 		System.out.println("pwd : " + pwd);
 
+		UserModel userModel = new UserModel(login, pwd);
+		// sender.sendMessage(userModel);
+		// userModel = receiver.receiveMessage();
+
+		System.out.println(userModel.getLogin());
+		System.out.println(userModel.getRole());
+
 		JSONObject responseJson = new JSONObject();
+
+		// responseJson.put("login", userModel.getLogin());
+		// if (userModel.getRole().equals("NONE")) {
+		// responseJson.put("validAuth", false);
+		// }
+		// else {
+		// responseJson.put("validAuth", "true");
+		// }
+
 		responseJson.put("login", "tp");
 		responseJson.put("validAuth", true);
 		responseJson.put("role", "admin");
@@ -111,7 +104,7 @@ public class WatcherAuthServlet extends HttpServlet {
 		response.setContentType("application/json");
 		response.getOutputStream().print(responseJson.toJSONString());
 		response.getOutputStream().flush();
-		
+
 	}
 
 }

@@ -14,9 +14,6 @@ import javax.jms.Queue;
 
 import common.UserModel;
 
-/**
- * Session Bean implementation class MessageSender
- */
 @Stateless
 @LocalBean
 public class MessageSender implements MessageSenderLocal {
@@ -26,15 +23,11 @@ public class MessageSender implements MessageSenderLocal {
 	@Resource(mappedName = "java:/jms/queue/watcher-queue")
 	Queue queue;
 
-	/**
-	 * Default constructor.
-	 */
 	public MessageSender() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void sendMessage(String message) {
-		// TODO
+		context.createProducer().send(queue, message);
 	}
 
 	public void sendMessage(UserModel user) {
@@ -43,7 +36,6 @@ public class MessageSender implements MessageSenderLocal {
 			message.setObject((Serializable) user);
 			context.createProducer().send(queue, (Message) user);
 		} catch (JMSException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
