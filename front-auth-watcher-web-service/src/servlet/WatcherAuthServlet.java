@@ -17,8 +17,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
-import common.UserModel;
 
+import common.Role;
+import common.UserModel;
 import ejb.MessageReceiverSyncLocal;
 import ejb.MessageSenderLocal;
 
@@ -81,25 +82,35 @@ public class WatcherAuthServlet extends HttpServlet {
 		System.out.println("pwd : " + pwd);
 
 		UserModel userModel = new UserModel(login, pwd);
-		// sender.sendMessage(userModel);
-		// userModel = receiver.receiveMessage();
-
+		
+		System.out.println("0000000000000000000000000000000000000000000000");
+		System.out.println("0000000000000000000000000000000000000000000000");
+		System.out.println("0000000000000000000000000000000000000000000000");
+		System.out.println("0000000000000000000000000000000000000000000000");
+		System.out.println("0000000000000000000000000000000000000000000000");
+		System.out.println("0000000000000000000000000000000000000000000000");
+		
+		sender.sendMessage("yoyo");
+		
+		System.out.println(receiver.receiveMessage());
+		
+		userModel.setLogin("tp");
+		userModel.setRole(Role.ADMIN);
 		System.out.println(userModel.getLogin());
 		System.out.println(userModel.getRole());
 
 		JSONObject responseJson = new JSONObject();
 
-		// responseJson.put("login", userModel.getLogin());
-		// if (userModel.getRole().equals("NONE")) {
-		// responseJson.put("validAuth", false);
-		// }
-		// else {
-		// responseJson.put("validAuth", "true");
-		// }
+		responseJson.put("login", userModel.getLogin());
+		if (userModel.getRole().equals("NONE")) {
+			responseJson.put("validAuth", false);
+		} else {
+			responseJson.put("validAuth", "true");
+		}
 
 //		responseJson.put("login", "tp");
 //		responseJson.put("validAuth", true);
-//		responseJson.put("role", "admin");
+		responseJson.put("role", "admin");
 
 		response.setContentType("application/json");
 		response.getOutputStream().print(responseJson.toJSONString());

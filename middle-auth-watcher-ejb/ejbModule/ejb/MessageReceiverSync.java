@@ -5,6 +5,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
+import javax.jms.Message;
 import javax.jms.Queue;
 
 import common.UserModel;
@@ -21,8 +22,13 @@ public class MessageReceiverSync implements MessageReceiverSyncLocal {
 	
     public MessageReceiverSync() {}
 
-	public UserModel receiveMessage() {
+	public UserModel receiveMessageUser() {
 		UserModel user = (UserModel) context.createConsumer(queue);
 		return user;
+	}
+	
+	public Message receiveMessage() {
+		Message message = (Message) context.createConsumer(queue);
+		return message;
 	}
 }

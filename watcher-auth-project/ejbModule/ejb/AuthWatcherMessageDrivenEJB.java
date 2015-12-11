@@ -17,7 +17,7 @@ import common.UserModel;
 
 @MessageDriven(activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/watcher") })
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/watcher-queue") })
 public class AuthWatcherMessageDrivenEJB implements MessageListener {
 
 	private DataContainer dataContainer;
@@ -30,6 +30,16 @@ public class AuthWatcherMessageDrivenEJB implements MessageListener {
 	}
 
 	public void onMessage(Message message) {
+		
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
+		System.out.println("========================================================");
 		try {
 			if (message instanceof TextMessage) {
 				System.out.println("Topic: I received a TextMessage at "

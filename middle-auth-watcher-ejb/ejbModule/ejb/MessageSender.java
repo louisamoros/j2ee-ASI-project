@@ -24,6 +24,7 @@ public class MessageSender implements MessageSenderLocal {
 	Queue queue;
 
 	public MessageSender() {
+		super();
 	}
 
 	public void sendMessage(String message) {
