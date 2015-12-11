@@ -97,9 +97,9 @@ public class WatcherAuthServlet extends HttpServlet {
 		// responseJson.put("validAuth", "true");
 		// }
 
-		responseJson.put("login", "tp");
-		responseJson.put("validAuth", true);
-		responseJson.put("role", "admin");
+//		responseJson.put("login", "tp");
+//		responseJson.put("validAuth", true);
+//		responseJson.put("role", "admin");
 
 		response.setContentType("application/json");
 		response.getOutputStream().print(responseJson.toJSONString());
