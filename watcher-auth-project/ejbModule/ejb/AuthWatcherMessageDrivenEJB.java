@@ -23,7 +23,7 @@ public class AuthWatcherMessageDrivenEJB implements MessageListener {
 	private DataContainer dataContainer;
 
 	@EJB
-	MessageSenderLocal sender;
+	MessageReceiverSyncLocal receiver;
 
 	public AuthWatcherMessageDrivenEJB() {
 		dataContainer = new DataContainer();
@@ -32,17 +32,9 @@ public class AuthWatcherMessageDrivenEJB implements MessageListener {
 	public void onMessage(Message message) {
 		
 		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
-		System.out.println("========================================================");
 		try {
 			if (message instanceof TextMessage) {
-				System.out.println("Topic: I received a TextMessage at "
+				System.out.println("Queue: I received a TextMessage at "
 						+ new Date());
 				System.out.println("Message is : "
 						+ ((TextMessage) message).getText());
@@ -60,10 +52,8 @@ public class AuthWatcherMessageDrivenEJB implements MessageListener {
 
 					Role currentTestRole = dataContainer.checkUser(user);
 					if (Role.NONE == currentTestRole) {
-						sender.sendMessage(user);
 					} else {
 						user.setRole(currentTestRole);
-						sender.sendMessage(user);
 					}
 				}
 			} else {
